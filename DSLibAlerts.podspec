@@ -9,19 +9,16 @@
 
 Pod::Spec.new do |s|
   s.name             = "DSLibAlerts"
-  s.version          = "0.1.0"
-  s.summary          = "A short description of DSLibAlerts."
+  s.version          = "1.0.0"
+  s.summary          = "A library for displaying alerts to user."
   s.description      = <<-DESC
-                       An optional longer description of DSLibAlerts
-
-                       * Markdown format.
-                       * Don't worry about the indent, we strip it!
+Description to written
                        DESC
-  s.homepage         = "https://github.com/<GITHUB_USERNAME>/DSLibAlerts"
+  s.homepage         = "https://github.com/diejmon/DSLibAlerts"
   # s.screenshots     = "www.example.com/screenshots_1", "www.example.com/screenshots_2"
   s.license          = 'MIT'
   s.author           = { "Alexander Belyavskiy" => "diejmon@gmail.com" }
-  s.source           = { :git => "https://github.com/<GITHUB_USERNAME>/DSLibAlerts.git", :tag => s.version.to_s }
+  s.source           = { :git => "https://github.com/diejmon/DSLibAlerts.git", :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.platform     = :ios, '7.0'
