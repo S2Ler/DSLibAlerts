@@ -1,0 +1,186 @@
+"DSMessageDomainWebService.err_not_credits.title" = "Sorry";
+"DSMessageDomainWebService.err_not_credits.body" = "You don't have any credits. Buy some.";
+
+"DSMessageDomainWebService.err_login_incorr.title" = "Login Failed!";
+"DSMessageDomainWebService.err_login_incorr.body" = "Wrong credentials";
+
+"DSMessageDomainWebService.err_acc_exist.title" = "Account Exists!";
+"DSMessageDomainWebService.err_acc_exist.body" = "This email address is already signed up to use Snappy Recruit.";
+
+"DSMessageDomainWebService.err_unknown.title" = "Ooops...";
+"DSMessageDomainWebService.err_unknown.body" = "Something really bad happened. Please contact me by reception@ingeniuslabs.com.au";
+
+"DSMessageDomainWebService.err_job_not_exist.title" = "Ooops...";
+"DSMessageDomainWebService.err_job_not_exist.body" = "Something really bad happened. Please contact me by reception@ingeniuslabs.com.au";
+
+"DSMessageDomainWebService.err_subcategory_not_exist.title" = "Ooops...";
+"DSMessageDomainWebService.err_subcategory_not_exist.body" = "Something really bad happened. Please contact me by reception@ingeniuslabs.com.au";
+
+"DSMessageDomainWebService.err_jobAd_no_closed.title" = "Ooops...";
+"DSMessageDomainWebService.err_jobAd_no_closed.body" = "Something really bad happened. Please contact me by reception@ingeniuslabs.com.au";
+
+"DSMessageDomainWebService.err_acc_not_exist.title" = "Ooops...";
+"DSMessageDomainWebService.err_acc_not_exist.body" = "Something really bad happened. Please contact me by reception@ingeniuslabs.com.au";
+
+"DSMessageDomainWebService.err_employer_not_login.title" = "Unknown error";
+"DSMessageDomainWebService.err_employer_not_login.body" = "Please Logout and login again.";
+
+"DSMessageDomainWebService.err_countries_not_found.title" = "Unknown Error";
+"DSMessageDomainWebService.err_countries_not_found.body" = "Please try again.";
+
+"DSMessageDomainWebService.err_employeу_not_login.title" = "Unknown error";
+"DSMessageDomainWebService.err_employeу_not_login.body" = "Please Logout and login again.";
+
+"DSMessageDomainWebService.err_check_fails.title" = "Ooops...";
+"DSMessageDomainWebService.err_check_fails.body" = "Something really bad happened. Please contact me by reception@ingeniuslabs.com.au";
+
+"DSMessageDomainWebService.err_UID_incorr.title" = "Ooops...";
+"DSMessageDomainWebService.err_UID_incorr.body" = "Something really bad happened. Please contact me by reception@ingeniuslabs.com.au";
+
+"DSMessageDomainWebService.err_input_incorr.title" = "Ooops...";
+"DSMessageDomainWebService.err_input_incorr.body" = "Something really bad happened. Please contact me by reception@ingeniuslabs.com.au";
+
+"DSMessageDomainWebService.err_countries_not_found.title" = "Ooops...";
+"DSMessageDomainWebService.err_countries_not_found.body" = "Something really bad happened. Please contact me by reception@ingeniuslabs.com.au";
+
+"DSMessageDomainWebService.err_email_not_exist.title" = "Check you email";
+"DSMessageDomainWebService.err_email_not_exist.body" = "There is no an account with the specified email";
+
+"DSMessageDomainWebService.err_edit_timeout.title" = "Edit timeout";
+"DSMessageDomainWebService.err_edit_timeout.body" = "You can edit ad only during 15 minutes after creation";
+
+"DSMessageDomainWebService.code_expired.title" = "Code expired";
+"DSMessageDomainWebService.code_expired.body" = "Your verfication code has been expired. Please reset password again.";
+
+"DSMessageDomainWebService.code_not_valid.title" = "Code isn't valid";
+"DSMessageDomainWebService.code_not_valid.body" = "Verification code isn't valid. Please try again";
+
+"DSMessageDomainWebService.old_pass_not_valid.title" = "Old passcode is incorrect";
+"DSMessageDomainWebService.old_pass_not_valid.body" = "Please try again";
+
+"DSMessageDomainWebService.err_state_not_found.title" = "No State";
+"DSMessageDomainWebService.err_state_not_found.body" = "Selected Country doesn't have states";
+
+"DSMessageDomainNotifications.msg_new_items_in_inbox.title" = "Great news!";
+"DSMessageDomainNotifications.msg_new_items_in_inbox.body" = "You have %@ new job matches.";
+
+"DSMessageDomainNotifications.msg_new_item_in_inbox.title" = "Great news!";
+"DSMessageDomainNotifications.msg_new_item_in_inbox.body" = "You have a new job match.";
+
+"DSMessageDomainNotifications.msg_ad_closed.title" = "Hey!";
+"DSMessageDomainNotifications.msg_ad_closed.body" = "'%@' ad has been closed.";
+
+"DSPurchaseManagerErrorDomain.err_products_is_not_fetched.title" = "Products are not available";
+"DSPurchaseManagerErrorDomain.err_products_is_not_fetched.body" = "Please contact support team";
+
+"DSPurchaseManagerErrorDomain.err_in_app_purchase_disabled.title" = "InApp Purchase disabled";
+"DSPurchaseManagerErrorDomain.err_in_app_purchase_disabled.body" = "Please turn them on in the settings";
+
+"DSPurchaseManagerErrorDomain.err_check_internet_connection.title" = "No Internet";
+"DSPurchaseManagerErrorDomain.err_check_internet_connection.body" = "Check your Internet connection";
+
+"DSPurchaseManagerErrorDomain.err_receipt_invalid.title" = "Purchase invalid";
+"DSPurchaseManagerErrorDomain.err_receipt_invalid.body" = "Please don't use InApp Cracker";
+
+"DSPurchaseManagerErrorDomain.err_no_connection_to_apple.title" = "Apple's servers shut down";
+"DSPurchaseManagerErrorDomain.err_no_connection_to_apple.body" = "Cannot connect to Apple's servers";
+
+"DSPurchaseManagerErrorDomain.err_unknown.title" = "Ooopss.";
+"DSPurchaseManagerErrorDomain.err_unknown.body" = "Unknown error during communication with the server";
+
+"NSURLErrorDomain.-1001.title" = "No Internet";
+"NSURLErrorDomain.-1001.body" = "Please check your internet connection. This app is all about receiving up to the minute information so it's important to have an internet connection.";
+
+"NSURLErrorDomain.-1003.title" = "No Internet";
+"NSURLErrorDomain.-1003.body" = "Please check your internet connection. This app is all about receiving up to the minute information so it's important to have an internet connection.";
+
+"NSURLErrorDomain.-1009.title" = "No Internet";
+"NSURLErrorDomain.-1009.body" = "Please check your internet connection. This app is all about receiving up to the minute information so it's important to have an internet connection.";
+
+"NSURLErrorDomain.-1004.title" = "No Internet";
+"NSURLErrorDomain.-1004.body" = "Please check your internet connection. This app is all about receiving up to the minute information so it's important to have an internet connection.";
+
+"SKErrorDomain.0.title" = "Error";
+"SKErrorDomain.0.body" = "Please try again";
+
+"DSMessageDomainUI.ui_notification.title" = "Notification";
+"DSMessageDomainUI.ui_notification.body" = "%@";
+
+"DSMessageDomainUI.err_push_notification.title" = "Error";
+"DSMessageDomainUI.err_push_notification.body" = "%@";
+
+"DSMessageDomainUI.ui_ask_unlink_dropbox.title" = "Unlink Dropbox";
+"DSMessageDomainUI.ui_ask_unlink_dropbox.body" = "Do you wish to unlink your dropbox account?";
+
+"DSMessageDomainUI.err_template_setup.title" = "Error";
+"DSMessageDomainUI.err_template_setup.body" = "Template is not correctly setup in database, please add a file to download";
+
+"DSMessageDomainUI.err_web_view.title" = "Error";
+"DSMessageDomainUI.err_web_view.body" = "%@";
+
+"DSMessageDomainUI.err_email_invalid.title" = "Invalid Email";
+"DSMessageDomainUI.err_email_invalid.body" = "Please enter a valid email address.";
+
+"DSMessageDomainUI.err_incomplete_info.title" = "Incomplete Info";
+"DSMessageDomainUI.err_incomplete_info.body" = "Please fill in all the required fields.";
+
+"DSMessageDomainUI.err_phoneNumber_invalid.title" = "Invalid Phone Number";
+"DSMessageDomainUI.err_phoneNumber_invalid.body" = "Please enter a valid phone number.";
+
+"DSMessageDomainUI.err_template_download.title" = "Error";
+"DSMessageDomainUI.err_template_download.body" = "Error while downloading template, please retry later. (%@)";
+
+"DSMessageDomainUI.err_design_creation.title" = "Error";
+"DSMessageDomainUI.err_design_creation.body" = "Impossible to create a new design";
+
+"DSMessageDomainUI.ui_warn_before_logout.title" = "Warning";
+"DSMessageDomainUI.ui_warn_before_logout.body" = "Logging out from your local account will result in loss of all your data. Do you confirm?";
+
+"DSMessageDomainUI.ui_order_completed.title" = "Confirmation";
+"DSMessageDomainUI.ui_order_completed.body" = "Your order has been processed. You will receive it in a few days.";
+
+"DSMessageDomainUI.err_refresh_data.title" = "Update Error";
+"DSMessageDomainUI.err_refresh_data.body" = "Failed to refresh data... %@";
+
+"DSMessageDomainUI.err_video_camera_not_available.title" = "Error";
+"DSMessageDomainUI.err_video_camera_not_available.body" = "Your device has no video recording capabilities. Please choose a video from your library instead.";
+
+"DSMessageDomainUI.err_video_recording_unknown_error.title" = "Error";
+"DSMessageDomainUI.err_video_recording_unknown_error.body" = "An error occured while playing a video.";
+
+"DSMessageDomainUI.err_document_open.title" = "Error";
+"DSMessageDomainUI.err_document_open.body" = "Impossible to open Document at URL %@";
+
+"DSMessageDomainUI.err_no_email_account.title" = "Error";
+"DSMessageDomainUI.err_no_email_account.body" = "You don't have email account. Please create one from Settings.app";
+
+"DSMessageDomainUI.err_description.title" = "Error";
+"DSMessageDomainUI.err_description.body" = "%@, %@";
+
+"DSMessageDomainUI.ui_facebook_posted.title" = "Successfully posted on facebook";
+"DSMessageDomainUI.ui_facebook_posted.body" = "";
+
+"DSMessageDomainUI.err_document_delete.title" = "Error";
+"DSMessageDomainUI.err_document_delete.body" = "Something bad happened: %@";
+
+"DSMessageDomainUI.ui_migration_ask.title" = "Migration";
+"DSMessageDomainUI.ui_migration_ask.body" = "Do you want to migration from previous storage?";
+
+"DSMessageDomainUI.err_migration.title" = "Migration Failed";
+"DSMessageDomainUI.err_migration.body" = "%@";
+
+"DSMessageDomainUI.ui_new_doc_available.title" = "Document Updated";
+"DSMessageDomainUI.ui_new_doc_available.body" = "Modification date: %@";
+
+"DSMessageDomainUI.err_fetch_controller.title" = "Load Error";
+"DSMessageDomainUI.err_fetch_controller.body" = "Can't open document";
+
+"DSMessageDomainUI.ui_ask_delete_template.title" = "Delete";
+"DSMessageDomainUI.ui_ask_delete_template.body" = "Do you really want to delete selected template?";
+
+"DSMessageDomainUI.ui_ask_delete_documents.title" = "Delete";
+"DSMessageDomainUI.ui_ask_delete_documents.body" = "Do you really want to delete selected documents?";
+
+"DSMessageDomainUI.err_shopping_cart_disabled.title" = "Warning";
+"DSMessageDomainUI.err_shopping_cart_disabled.body" = "There is an unfinished payment. Please go to shopping cart and finish it";
+

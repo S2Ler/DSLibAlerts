@@ -1,0 +1,14 @@
+source 'https://github.com/CocoaPods/Specs.git'
+
+target 'DSLibAlerts', :exclusive => true do
+  pod 'DSLibCore', :path => "../../DSLibCore"
+  pod "DSLibAlerts", :path => "../"
+end
+
+target 'Tests', :exclusive => true do
+  pod 'DSLibCore', :path => "../../DSLibCore"
+  pod "DSLibAlerts", :path => "../"
+
+  pod 'Specta'
+  pod 'Expecta'
+end
