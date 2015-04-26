@@ -12,7 +12,7 @@ Pod::Spec.new do |s|
   s.version          = "1.0.0"
   s.summary          = "A library for displaying alerts to user."
   s.description      = <<-DESC
-Description to written
+A library for displaying alerts for user. Description to written.
                        DESC
   s.homepage         = "https://github.com/diejmon/DSLibAlerts"
   # s.screenshots     = "www.example.com/screenshots_1", "www.example.com/screenshots_2"
