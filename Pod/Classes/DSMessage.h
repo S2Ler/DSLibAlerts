@@ -1,19 +1,20 @@
 #import <Foundation/Foundation.h>
 #import "DSAlertsSupportCode.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @class DSMessageContext;
 
 @interface DSMessage: NSObject <NSCoding>
 
-@property (nonatomic, strong) DSMessageContext *context;
-@property (nonatomic, strong, readonly) DSMessageDomain *domain;
-@property (nonatomic, strong, readonly) DSMessageCode *code;
-@property (nonatomic, strong, readonly) NSArray *params;
+@property (nonatomic, strong, nullable) DSMessageContext *context;
+@property (nonatomic, strong, readonly, nonnull) DSMessageDomain *domain;
+@property (nonatomic, strong, readonly, nonnull) DSMessageCode *code;
+@property (nonatomic, strong, readonly, nullable) NSArray *params;
 
-@property (nonatomic, strong) NSArray *titleParams;
+@property (nonatomic, strong, nullable) NSArray *titleParams;
 
 - (NSString *)localizedTitle;
-
 - (NSString *)localizedBody;
 
 /**
@@ -21,7 +22,7 @@
 */
 - (instancetype)initWithDomain:(DSMessageDomain *)theDomain
                           code:(DSMessageCode *)theCode
-                        params:(id)theParam, ... NS_REQUIRES_NIL_TERMINATION;
+                        params:(nullable id)theParam, ... NS_REQUIRES_NIL_TERMINATION;
 
 
 - (instancetype)initWithDomain:(DSMessageDomain *)theDomain
@@ -40,10 +41,12 @@
 
 + (instancetype)messageWithError:(NSError *)theError;
 
-- (BOOL)isEqualToMessage:(id)theObj;
+- (BOOL)isEqualToMessage:(nullable id)theObj;
 
 + (instancetype)unknownError;
 
 - (BOOL)isGeneralErrorMessage;
 
 @end
+
+NS_ASSUME_NONNULL_END

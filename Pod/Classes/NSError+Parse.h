@@ -6,6 +6,10 @@
 
 @import Foundation;
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface NSError (Parse)
 - (NSError *)correctedParseError;
 @end
+
+NS_ASSUME_NONNULL_END

@@ -10,5 +10,5 @@
 @class DSAlertsHandler;
 
 @interface DSAlertsQueue (Private)
-- (void)setAlertsHandler:(DSAlertsHandler *)handler;
+- (void)setAlertsHandler:(nullable DSAlertsHandler *)handler;
 @end

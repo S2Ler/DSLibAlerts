@@ -3,20 +3,22 @@
 #import "DSAlertViewDelegate.h"
 
 @class DSAlert;
-@class Reachability;
+@class DSReachability;
 @class DSAlertsQueue;
 
-#define DSAlertsHandler_SHOW_NO_INTERNET_CONNECTION_POPUPS_ONCE 1
+#ifndef DSAlertsHandler_SHOW_NO_INTERNET_CONNECTION_POPUPS_ONCE
+  #define DSAlertsHandler_SHOW_NO_INTERNET_CONNECTION_POPUPS_ONCE 1
+#endif
 
 @interface DSAlertsHandler: NSObject<DSAlertViewDelegate>
 
-@property (nonatomic, weak) Reachability *reachability;
-@property (nonatomic, strong) NSArray *filterOutMessages;
+@property (nonatomic, weak, nullable) DSReachability *reachability;
+@property (nonatomic, strong, nullable) NSArray *filterOutMessages;
 
-+ (instancetype)sharedInstance;
++ (nonnull instancetype)sharedInstance;
 
-- (void)showAlert:(DSAlert *)theAlert modally:(BOOL)isModalAlert;
+- (void)showAlert:(nullable DSAlert *)theAlert modally:(BOOL)isModalAlert;
 
-- (DSAlertsQueue *)detachAlertsQueue;
+- (nonnull DSAlertsQueue *)detachAlertsQueue;
 
 @end

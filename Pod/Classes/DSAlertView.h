@@ -4,15 +4,15 @@
 @import Foundation;
 
 @protocol DSAlertView<NSObject>
-@property (nonatomic, strong) DSAlert *alert;
+@property (nonatomic, strong, nullable) DSAlert *alert;
 
-- (id)initWithTitle:(NSString *)title
-            message:(NSString *)message
-           delegate:(id<DSAlertViewDelegate>)delegate
-  cancelButtonTitle:(NSString *)cancelButtonTitle
-        otherTitles:(NSArray *)otherButtonTitles;
+- (nonnull instancetype)initWithTitle:(nullable NSString *)title
+                              message:(nullable NSString *)message
+                             delegate:(nullable id<DSAlertViewDelegate>)delegate
+                    cancelButtonTitle:(nullable NSString *)cancelButtonTitle
+                          otherTitles:(nullable NSArray *)otherButtonTitles;
 
-- (void)setDelegate:(id<DSAlertViewDelegate>)theDelegate;
+- (void)setDelegate:(nullable id<DSAlertViewDelegate>)theDelegate;
 - (void)show;
 - (void)dismissAnimated:(BOOL)animated;
 

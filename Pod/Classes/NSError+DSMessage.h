@@ -8,6 +8,8 @@
 
 @import Foundation;
 
+NS_ASSUME_NONNULL_BEGIN
+
 @class DSMessage;
 
 @interface NSError (DSMessage)
@@ -16,3 +18,5 @@
 + (instancetype)errorFromMessage:(DSMessage *)message;
                                   
 @end
+
+NS_ASSUME_NONNULL_END

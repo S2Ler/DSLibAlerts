@@ -14,16 +14,16 @@
 
 @interface DSAlertsQueue : NSObject {
   @private
-  __weak DSAlertsHandler *_alertsHandler;
+  __weak  DSAlertsHandler * __nullable _alertsHandler;
 }
 
 /** Interval between which queue will commit all objects added. Default is 2s */
 @property (nonatomic, assign) NSTimeInterval despatchInterval;
 
-- (void)addMessage:(DSMessage *)message;
-- (void)addAlert:(DSAlert *)alert modal:(BOOL)isModal;
-- (void)addError:(NSError *)error;
-- (void)addParseError:(NSError *)error;
+- (void)addMessage:(nullable DSMessage *)message;
+- (void)addAlert:(nullable DSAlert *)alert modal:(BOOL)isModal;
+- (void)addError:(nullable NSError *)error;
+- (void)addParseError:(nullable NSError *)error;
 
 - (void)commit;
                  

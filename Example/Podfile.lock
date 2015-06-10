@@ -1,0 +1,26 @@
+PODS:
+  - DSLibAlerts (1.0.0):
+    - DSLibCore
+  - DSLibCore (1.1.0)
+  - Expecta (1.0.0)
+  - Specta (1.0.1)
+
+DEPENDENCIES:
+  - DSLibAlerts (from `../`)
+  - DSLibCore (from `../../DSLibCore`)
+  - Expecta
+  - Specta
+
+EXTERNAL SOURCES:
+  DSLibAlerts:
+    :path: ../
+  DSLibCore:
+    :path: ../../DSLibCore
+
+SPEC CHECKSUMS:
+  DSLibAlerts: 47e7b7df1fad9154de821ee57e815327335aa17f
+  DSLibCore: cd21d278a92e192d64405e626b49ac68031192ac
+  Expecta: 32604574add2c46a36f8d2f716b6c5736eb75024
+  Specta: 097be314a75de103703a3bf9a529dc1a398509d7
+
+COCOAPODS: 0.37.2

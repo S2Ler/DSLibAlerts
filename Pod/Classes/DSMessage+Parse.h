@@ -7,8 +7,10 @@
 //
 
 #import "DSMessage.h"
-
+NS_ASSUME_NONNULL_BEGIN
 
 @interface DSMessage (Parse)
 + (instancetype)messageWithParseError:(NSError *)parseError;
 @end
+
+NS_ASSUME_NONNULL_END

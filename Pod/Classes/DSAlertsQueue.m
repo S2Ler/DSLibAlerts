@@ -56,18 +56,29 @@
 
 - (void)addAlert:(DSAlert *)alert modal:(BOOL)isModal
 {
+  if (!alert) {
+    return;
+  }
+  
   NSDictionary *definition = @{@"object": alert, @"modal":@(isModal)};
   [_queue push:definition];
 }
 
 - (void)addError:(NSError *)error
 {
+  if (!error) {
+    return;
+  }
+  
   NSDictionary *definition = @{@"object": error, @"isParse": @(NO)};
   [_queue push:definition];
 }
 
 - (void)addParseError:(NSError *)error
 {
+  if (!error) {
+    return;
+  }
   NSDictionary *definition = @{@"object": error, @"isParse": @(YES)};
   [_queue push:definition];
 }
