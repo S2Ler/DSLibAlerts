@@ -13,10 +13,17 @@ NS_ASSUME_NONNULL_BEGIN
 @class DSMessage;
 
 @interface NSError (DSMessage)
-- (NSString *)title;
-+ (instancetype)errorWithTitle:(NSString *)title description:(NSString *)description;
-+ (instancetype)errorFromMessage:(DSMessage *)message;
-                                  
+- (nullable NSString *)title;
++ (nonnull instancetype)errorWithTitle:(nonnull NSString *)title
+                           description:(nonnull NSString *)description;
++ (nonnull instancetype)errorWithTitle:(nonnull NSString *)title
+                           description:(nonnull NSString *)description
+                                domain:(nonnull NSString *)domain
+                                  code:(nonnull NSString *)code;
++ (nonnull instancetype)errorFromMessage:(nonnull DSMessage *)message;
+- (BOOL)isErrorFromMessage;
+- (nullable NSString *)extractMessageCode;
+
 @end
 
 NS_ASSUME_NONNULL_END

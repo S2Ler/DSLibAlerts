@@ -1,16 +1,17 @@
-
 #pragma mark - include
 #import "DSAlertsHandler.h"
-#import <DSLibCore/DSMacros.h>
+#import "DSMacros.h"
 #import "DSAlert.h"
-#import <DSLibCore/DSQueue.h>
+#import "DSQueue.h"
 #import "DSAlertView.h"
 #import "DSAlertViewFactory.h"
 #import "DSAlertButton.h"
-#import <DSLibCore/DSReachability.h>
+#import "DSReachability.h"
 #import "DSMessage.h"
 #import "DSAlertsQueue.h"
 #import "DSAlertQueue+Private.h"
+#import "DSAlertsHandlerConfiguration.h"
+@import DSLibCore;
 
 #pragma mark - private
 @interface DSAlertsHandler ()
@@ -31,9 +32,9 @@
 + (id)sharedInstance
 {
   DEFINE_SHARED_INSTANCE_USING_BLOCK(^
-  {
-    return [[DSAlertsHandler alloc] init];
-  });
+                                     {
+                                       return [[DSAlertsHandler alloc] init];
+                                     });
 }
 
 - (id)init
@@ -63,7 +64,7 @@
   if ([self reachability]) {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
   }
-
+  
   _reachability = reachability;
   [[NSNotificationCenter defaultCenter] addObserver:self
                                            selector:@selector(reachabilityChanged:)
@@ -83,7 +84,7 @@
 - (void)showAlert:(DSAlert *)theAlert modally:(BOOL)isModalAlert
 {
   NSAssert(isModalAlert == YES, @"Only modal alert is supported now");
-
+  
   void (^block)() = ^{
     [self queueAlert:theAlert];
   };
@@ -109,10 +110,10 @@
   ASSERT_MAIN_THREAD;
   id<DSAlertView> alertView = [DSAlertViewFactory modalAlertViewWithAlert:theAlert
                                                                  delegate:self];
-
+  
   [self setCurrentAlertView:alertView];
   [self setCurrentAlert:theAlert];
-
+  
   [alertView show];
 }
 
@@ -123,7 +124,7 @@
   if (currentAlertEquals == YES) {
     return YES;
   }
-
+  
   BOOL alertInQueue = NO;
   for (DSAlert *queueAlert in [self alertsQueue]) {
     if ([queueAlert isAlertMessageEqualWith:theAlert] == YES) {
@@ -131,7 +132,7 @@
       break;
     }
   }
-
+  
   return alertInQueue;
 }
 
@@ -150,43 +151,49 @@
 - (void)queueAlert:(DSAlert *)theAlert
 {
   ASSERT_MAIN_THREAD;
-
+  
   if (!theAlert) {
     return;
   }
-
+  
   //If the same message is already in queue don't do anything
   if ([self isAlertInQueue:theAlert] == YES) {
     return;
   }
-
+  
   if ([self isMessage:[theAlert message]
          inCollection:[self filterOutMessages]]) {
     return;
   }
   else if ([[[theAlert message] domain] isEqualToString:NSURLErrorDomain] &&
-    [[[theAlert message] code] integerValue] == NSURLErrorNotConnectedToInternet) {
-
+           [[[theAlert message] code] integerValue] == NSURLErrorNotConnectedToInternet) {
+    
     if ([self shouldShowNotReachableAlerts]) {
       [[self alertsQueue] push:theAlert];
     }
-
+    
     [self setIsOnline:NO];
+    NSNumber *showOfflineErrorsMoveThanOncen = [[DSAlertsHandlerConfiguration sharedInstance] showOfflineErrorsMoveThanOnce];
+    if (showOfflineErrorsMoveThanOncen) {
+      [self setShouldShowNotReachableAlerts:showOfflineErrorsMoveThanOncen.boolValue];
+    }
+    else {
 #if DSAlertsHandler_SHOW_NO_INTERNET_CONNECTION_POPUPS_ONCE
-    [self setShouldShowNotReachableAlerts:NO];
+      [self setShouldShowNotReachableAlerts:NO];
 #endif
+    }
   }
   else {
     [[self alertsQueue] push:theAlert];
   }
-
+  
   [self processNextAlertFromQueue];
 }
 
 - (void)processNextAlertFromQueue
 {
   ASSERT_MAIN_THREAD;
-
+  
   if ([self currentAlertView] == nil) {
     DSAlert *nextAlert = [[self alertsQueue] pop];
     if (nextAlert != nil) {
@@ -198,11 +205,11 @@
 - (void)alertDismissed
 {
   ASSERT_MAIN_THREAD;
-
+  
   //Cleanup
   [self setCurrentAlertView:nil];
   [self setCurrentAlert:nil];
-
+  
   [self processNextAlertFromQueue];
 }
 
@@ -216,9 +223,9 @@
 didDismissWithButtonIndex:(NSInteger)theButtonIndex
 {
   ASSERT_MAIN_THREAD;
-
+  
   DSAlertButton *clickedButton = nil;
-
+  
   if ([theAlertView isCancelButtonAtIndex:theButtonIndex]) {
     clickedButton = [[self currentAlert] cancelButton];
   }
@@ -226,7 +233,7 @@ didDismissWithButtonIndex:(NSInteger)theButtonIndex
     clickedButton = [[[self currentAlert] otherButtons]
                      objectAtIndex:(NSUInteger)(theButtonIndex - ([[self currentAlert] cancelButton] ? 1: 0))];
   }
-
+  
   [clickedButton invoke];
   [self alertDismissed];
 }
@@ -235,7 +242,7 @@ didDismissWithButtonIndex:(NSInteger)theButtonIndex
 - (void)applicationDidResignActive:(NSNotification *)notification
 {
   ASSERT_MAIN_THREAD;
-
+  
   [[self alertsQueue] filterWithPredicate:[NSPredicate predicateWithBlock:^BOOL(DSAlert *alert, NSDictionary *bindings) {
     return [alert shouldDismissOnApplicationDidResignActive] == NO;
   }]];

@@ -12,6 +12,7 @@
 @property (nonatomic, strong) DSMessageCode *code;
 @property (nonatomic, strong) NSArray *params;
 @property (nonatomic, strong) NSError *error;
+@property (nonatomic, strong) NSString *uniqueID;
 @end
 
 @implementation DSMessage
@@ -176,8 +177,14 @@
   NSString *domain = [theError domain];
   NSInteger code = [theError code];
 
-  self = [self initWithDomain:domain
-                         code:[NSString stringWithFormat:@"%lld", (long long)code]];
+  if ([theError isErrorFromMessage]) {
+    self = [self initWithDomain:domain code:[theError extractMessageCode]];
+  }
+  else {
+    self = [self initWithDomain:domain
+                           code:[NSString stringWithFormat:@"%lld", (long long)code]];
+  }
+  
   if (self) {
       _error = theError;
   }
@@ -248,7 +255,9 @@
     }
   }
 
-  return (domainsEqual && codesEqual && paramsEqual);
+  BOOL uniquenessEquals = (!self.uniqueID && !theObj.uniqueID) || [self.uniqueID isEqualToString:theObj.uniqueID];
+  
+  return (domainsEqual && codesEqual && paramsEqual && uniquenessEquals);
 }
 
 - (BOOL)isEqual:(id)object
@@ -286,6 +295,7 @@
   [encoder encodeObject:self.params forKey:@"params"];
   [encoder encodeObject:self.error forKey:@"error"];
   [encoder encodeObject:self.titleParams forKey:@"titleParams"];
+  [encoder encodeObject:self.uniqueID forKey:@"uniqueID"];
 }
 
 - (id)initWithCoder:(NSCoder *)decoder
@@ -298,7 +308,30 @@
     self.params = [decoder decodeObjectForKey:@"params"];
     self.error = [decoder decodeObjectForKey:@"error"];
     self.titleParams = [decoder decodeObjectForKey:@"titleParams"];
+    self.uniqueID = [decoder decodeObjectForKey:@"uniqueID"];
   }
   return self;
 }
+
+- (void)makeUnique
+{
+  self.uniqueID = [[NSUUID UUID] UUIDString];
+}
+
+- (BOOL)isEqualToError:(NSError *)error
+{
+  return DSMessageDomainsEqual(error.domain, self.domain) &&
+  DSMessageCodesEqual(self.code, [@(error.code) description]);
+}
+
+- (BOOL)isEqualToDomain:(DSMessageDomain *)domain codeInteger:(NSInteger)code
+{
+  return [self isEqualToError:[NSError errorWithDomain:domain code:code userInfo:nil]];
+}
+
+- (BOOL)isEqualToDomain:(DSMessageDomain *)domain code:(DSMessageCode *)code
+{
+  return DSMessageDomainsEqual(self.domain, domain) && DSMessageCodesEqual(self.code, code);
+}
+
 @end

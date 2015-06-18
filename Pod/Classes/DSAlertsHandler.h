@@ -6,10 +6,6 @@
 @class DSReachability;
 @class DSAlertsQueue;
 
-#ifndef DSAlertsHandler_SHOW_NO_INTERNET_CONNECTION_POPUPS_ONCE
-  #define DSAlertsHandler_SHOW_NO_INTERNET_CONNECTION_POPUPS_ONCE 1
-#endif
-
 @interface DSAlertsHandler: NSObject<DSAlertViewDelegate>
 
 @property (nonatomic, weak, nullable) DSReachability *reachability;
