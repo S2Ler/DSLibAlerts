@@ -19,6 +19,11 @@ typedef enum
 
 @implementation DSAlertButton
 
+- (instancetype)init {
+  ASSERT_NOT_SUPPORTED_METHOD;
+  return [self initWithTitle:@"" target:nil action:nil];
+}
+
 - (instancetype)initWithTitle:(NSString *)theTitle target:(id)theTarget action:(SEL)theAction
 {
   self = [super init];

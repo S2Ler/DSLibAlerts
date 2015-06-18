@@ -13,9 +13,17 @@
 
 @implementation DSAlert
 
-- (id)initWithMessage:(DSMessage *)theMessage
-         cancelButton:(DSAlertButton *)theCancelButton
-         otherButtons:(DSAlertButton *)theButtons, ...
+- (instancetype)init
+{
+  ASSERT_NOT_SUPPORTED_METHOD;
+  return [self initWithMessage:[DSMessage unknownError]
+                  cancelButton:nil
+                  otherButtons:nil];
+}
+
+- (instancetype)initWithMessage:(DSMessage *)theMessage
+                   cancelButton:(DSAlertButton *)theCancelButton
+                   otherButtons:(DSAlertButton *)theButtons, ...
 {
   self = [super init];
   if (self) {
