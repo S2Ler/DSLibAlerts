@@ -2,6 +2,8 @@
 @import Foundation;
 #import "DSAlertViewDelegate.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @class DSAlert;
 @class DSReachability;
 @class DSAlertsQueue;
@@ -11,10 +13,12 @@
 @property (nonatomic, weak, nullable) DSReachability *reachability;
 @property (nonatomic, strong, nullable) NSArray *filterOutMessages;
 
-+ (nonnull instancetype)sharedInstance;
++ (instancetype)sharedInstance;
 
 - (void)showAlert:(nullable DSAlert *)theAlert modally:(BOOL)isModalAlert;
 
-- (nonnull DSAlertsQueue *)detachAlertsQueue;
+- (DSAlertsQueue *)detachAlertsQueue;
 
 @end
+
+NS_ASSUME_NONNULL_END

@@ -14,13 +14,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface NSError (DSMessage)
 - (nullable NSString *)title;
-+ (nonnull instancetype)errorWithTitle:(nonnull NSString *)title
-                           description:(nonnull NSString *)description;
-+ (nonnull instancetype)errorWithTitle:(nonnull NSString *)title
-                           description:(nonnull NSString *)description
-                                domain:(nonnull NSString *)domain
-                                  code:(nonnull NSString *)code;
-+ (nonnull instancetype)errorFromMessage:(nonnull DSMessage *)message;
++ (instancetype)errorWithTitle:(NSString *)title
+                   description:(NSString *)description;
++ (instancetype)errorWithTitle:(NSString *)title
+                   description:(NSString *)description
+                        domain:(NSString *)domain
+                          code:(NSString *)code;
++ (instancetype)errorFromMessage:(DSMessage *)message;
 - (BOOL)isErrorFromMessage;
 - (nullable NSString *)extractMessageCode;
 
