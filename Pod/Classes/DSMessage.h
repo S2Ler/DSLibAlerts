@@ -8,8 +8,8 @@ NS_ASSUME_NONNULL_BEGIN
 @interface DSMessage: NSObject <NSCoding>
 
 @property (nonatomic, strong, nullable) DSMessageContext *context;
-@property (nonatomic, strong, readonly, nonnull) DSMessageDomain *domain;
-@property (nonatomic, strong, readonly, nonnull) DSMessageCode *code;
+@property (nonatomic, strong, readonly) DSMessageDomain *domain;
+@property (nonatomic, strong, readonly) DSMessageCode *code;
 @property (nonatomic, strong, readonly, nullable) NSArray *params;
 
 @property (nonatomic, strong, nullable) NSArray *titleParams;
