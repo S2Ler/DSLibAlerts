@@ -10,7 +10,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface DSAlert: NSObject
 
 @property (nonatomic, strong, readonly, nullable) DSAlertButton * cancelButton;
-@property (nonatomic, strong, readonly, nullable) NSArray * otherButtons;
+@property (nonatomic, strong, readonly, nullable) NSArray<DSAlertButton*> * otherButtons;
 @property (nonatomic, strong, readonly, nullable) DSMessage * message;
 
 /** Default is YES */
@@ -18,7 +18,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (instancetype)initWithMessage:(DSMessage *)theMessage
                    cancelButton:(nullable DSAlertButton *)theCancelButton
-                   otherButtons:(nullable DSAlertButton *)theButtons, ... NS_REQUIRES_NIL_TERMINATION NS_DESIGNATED_INITIALIZER;
+                   otherButtons:(nullable DSAlertButton *)theButtons, ... NS_REQUIRES_NIL_TERMINATION;
+
+- (instancetype)initWithMessage:(DSMessage *)theMessage
+                   cancelButton:(nullable DSAlertButton *)theCancelButton
+              otherButtonsArray:(nullable NSArray<DSAlertButton*> *)theButtons NS_DESIGNATED_INITIALIZER;
 
 - (NSString *)localizedTitle;
 - (NSString *)localizedBody;

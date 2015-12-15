@@ -135,26 +135,31 @@
 }
 
 - (instancetype)initWithDomain:(DSMessageDomain *)theDomain
-                code:(DSMessageCode *)theCode
-              params:(id)theParam, ...
+                          code:(DSMessageCode *)theCode
+                        params:(id)theParam, ...
 {
+  va_list params;
+  va_start(params, theParam);
+  
+  NSMutableArray *paramsArray = [NSMutableArray array];
+  for (id param = theParam; param != nil; param = va_arg(params, id)) {
+    [paramsArray addObject:param];
+  }
+  va_end(params);
+  return [self initWithDomain:theDomain code:theCode paramsArray:paramsArray];
+}
+
+- (instancetype)initWithDomain:(DSMessageDomain *)theDomain
+                          code:(DSMessageCode *)theCode
+                   paramsArray:(nullable NSArray<id> *)theParams {
   self = [super init];
   if (self) {
     _domain = [theDomain copy];
     _code = theCode;
 
-    va_list params;
-    va_start(params, theParam);
-
-    NSMutableArray *paramsArray = [NSMutableArray array];
-    for (id param = theParam; param != nil; param = va_arg(params, id)) {
-      [paramsArray addObject:param];
-    }
-    va_end(params);
-
-    _params = [paramsArray copy];
+    _params = theParams.copy;
   }
-
+  
   return self;
 }
 

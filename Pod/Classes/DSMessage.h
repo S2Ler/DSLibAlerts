@@ -28,6 +28,9 @@ NS_ASSUME_NONNULL_BEGIN
 - (instancetype)initWithDomain:(DSMessageDomain *)theDomain
                           code:(DSMessageCode *)theCode
                         params:(nullable id)theParam, ... NS_REQUIRES_NIL_TERMINATION;
+- (instancetype)initWithDomain:(DSMessageDomain *)theDomain
+                          code:(DSMessageCode *)theCode
+                   paramsArray:(nullable NSArray<id> *)theParams NS_DESIGNATED_INITIALIZER;
 
 
 - (instancetype)initWithDomain:(DSMessageDomain *)theDomain
