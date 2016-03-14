@@ -55,11 +55,14 @@ static NSDictionary *DSAlertsHandlerConfiguration_sharedConfiguration = nil;
   
 }
 
-+ (id)setupSharedInstanceWithConfigurationDictionary:(NSDictionary *)theConfiguration
++ (nonnull instancetype)setupSharedInstanceWithConfigurationDictionary:(nonnull NSDictionary *)theConfiguration
+                                                   messagesTableBundle:(nullable NSBundle *)bundle
 {
   DSAlertsHandlerConfiguration_sharedConfiguration = theConfiguration;
   
-  return [self sharedInstance];
+  DSAlertsHandlerConfiguration *configuration = [self sharedInstance];
+  configuration.messagesTableBundle = bundle ?: [NSBundle mainBundle];
+  return configuration;
 }
 
 - (id)init {

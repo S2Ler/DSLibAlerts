@@ -19,8 +19,17 @@
 
 - (NSString *)localizationTable
 {
-  return [[DSAlertsHandlerConfiguration sharedInstance] messagesLocalizationTableName];
+  return [DSMessage localizationTable];
 }
+
+- (NSBundle *)localizationBundle {
+  return [DSMessage localizationBundle];
+}
+
++ (NSBundle *)localizationBundle {
+  return [[DSAlertsHandlerConfiguration sharedInstance] messagesTableBundle];
+}
+
 
 + (NSString *)localizationTable
 {
@@ -42,7 +51,7 @@
 - (NSString *)localizedTitle
 {
   NSString *localizationKey = [self keyForLocalizedTitle];
-  NSString *title = NSLocalizedStringFromTable(localizationKey, [self localizationTable], nil);
+  NSString *title = NSLocalizedStringFromTableInBundle(localizationKey, [self localizationTable], [self localizationBundle], nil);
   
   if ([[self titleParams] count] > 0) {
     NSString *find = @"%@";
@@ -64,8 +73,10 @@
     else if ([[[DSAlertsHandlerConfiguration sharedInstance] showGeneralMessageForUnknownCodes] boolValue]) {
       NSString *generalErrorTitleLocalizationKey = [NSString stringWithFormat:@"%@.%@.title",
                                                    DSAlertsGeneralDomain, DSAlertsGeneralCode];
-      NSString *generalErrorTitle = NSLocalizedStringFromTable(generalErrorTitleLocalizationKey,
-                                                              [self localizationTable], nil);
+      NSString *generalErrorTitle = NSLocalizedStringFromTableInBundle(generalErrorTitleLocalizationKey,
+                                                                       [self localizationTable],
+                                                                       [self localizationBundle],
+                                                                       nil);
       return generalErrorTitle;
     }
     else {
@@ -78,22 +89,30 @@
 
 + (NSString *)messageTitleFromError:(NSError *)error
 {
-  return [error title] ? [error title] : NSLocalizedStringFromTable(@"general.error.title", [self localizationTable], nil);
+  return [error title] ? [error title] : NSLocalizedStringFromTableInBundle(@"general.error.title",
+                                                                            [self localizationTable],
+                                                                            [self localizationBundle],
+                                                                            nil);
 }
 
 - (NSString *)generalErrorBody
 {
   NSString *generalErrorBodyLocalizationKey = [NSString stringWithFormat:@"%@.%@.body",
                                                DSAlertsGeneralDomain, DSAlertsGeneralCode];
-  NSString *generalErrorBody = NSLocalizedStringFromTable(generalErrorBodyLocalizationKey,
-                                                          [self localizationTable], nil);
+  NSString *generalErrorBody = NSLocalizedStringFromTableInBundle(generalErrorBodyLocalizationKey,
+                                                                  [self localizationTable],
+                                                                  [self localizationBundle],
+                                                                  nil);
   return generalErrorBody;
 }
 
 - (NSString *)localizedBody
 {
   NSString *localizationKey = [self keyForLocalizedBody];
-  NSString *body = NSLocalizedStringFromTable(localizationKey, [self localizationTable], nil);
+  NSString *body = NSLocalizedStringFromTableInBundle(localizationKey,
+                                                      [self localizationTable],
+                                                      [self localizationBundle],
+                                                      nil);
   
   if ([[self params] count] > 0) {
     NSString *find = @"%@";
