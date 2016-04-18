@@ -2,6 +2,6 @@
 #import "DSAlertView.h"
 @import UIKit;
 
-@interface DSUIAlertView: UIAlertView<DSAlertView, UIAlertViewDelegate>
+@interface DSUIAlertView: UIAlertController<DSAlertView>
 
 @end

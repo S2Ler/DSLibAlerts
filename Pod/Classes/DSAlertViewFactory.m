@@ -4,7 +4,6 @@
 #import "DSAlertView.h"
 #import "DSAlert.h"
 #import "DSUIAlertView.h"
-#import "DSAlertViewDelegate.h"
 #import "DSAlertButton.h"
 #import "DSAlertsHandlerConfiguration.h"
 
@@ -14,7 +13,7 @@
 + (id<DSAlertView>)modalAlertViewWithAlert:(DSAlert *)theAlert
                                   delegate:(id<DSAlertViewDelegate>)theDelegate
 {
-  NSArray *otherButtons = [theAlert otherButtons];
+  NSArray<DSAlertButton*> *otherButtons = [theAlert otherButtons];
 
   NSMutableArray *otherButtonsTitles = [NSMutableArray array];
   for (DSAlertButton *button in otherButtons) {
@@ -25,19 +24,19 @@
   NSString *alertViewClassName = [[DSAlertsHandlerConfiguration sharedInstance] modelAlertsClassName];
   Class alertViewClass = NSClassFromString(alertViewClassName);
   if (alertViewClass) {
-    alertView = [[alertViewClass alloc] initWithTitle:[theAlert localizedTitle]
-                                              message:[theAlert localizedBody]
-                                             delegate:theDelegate
-                                    cancelButtonTitle:[[theAlert cancelButton] title]
-                                          otherTitles:otherButtonsTitles];
+    alertView = [alertViewClass alertViewWithTitle:[theAlert localizedTitle]
+                                          message:[theAlert localizedBody]];
   }
   else {
-    alertView
-      = [[DSUIAlertView alloc] initWithTitle:[theAlert localizedTitle]
-                                     message:[theAlert localizedBody]
-                                    delegate:theDelegate
-                           cancelButtonTitle:[[theAlert cancelButton] title]
-                                 otherTitles:otherButtonsTitles];
+    alertView = [DSUIAlertView alertViewWithTitle:[theAlert localizedTitle]
+                                          message:[theAlert localizedBody]];
+  }
+  
+  for (DSAlertButton *otherButton in otherButtons) {
+    [alertView addButton:otherButton style:DSAlertButtonStyleDefault];
+  }
+  if ([theAlert cancelButton]) {
+    [alertView addButton:[theAlert cancelButton] style:DSAlertButtonStyleCancel];
   }
 
   [alertView setAlert:theAlert];

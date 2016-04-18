@@ -1,6 +1,5 @@
 
 @import Foundation;
-#import "DSAlertViewDelegate.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -8,7 +7,7 @@ NS_ASSUME_NONNULL_BEGIN
 @class DSReachability;
 @class DSAlertsQueue;
 
-@interface DSAlertsHandler: NSObject<DSAlertViewDelegate>
+@interface DSAlertsHandler: NSObject
 
 @property (nonatomic, weak, nullable) DSReachability *reachability;
 @property (nonatomic, strong, nullable) NSArray *filterOutMessages;

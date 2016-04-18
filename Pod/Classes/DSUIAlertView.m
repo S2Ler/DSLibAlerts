@@ -1,89 +1,50 @@
 
 #pragma mark - include
 #import "DSUIAlertView.h"
-#import "DSAlertViewDelegate.h"
+#import "DSAlertButton.h"
+@import DSLibCore;
 
 #pragma mark - private
 @interface DSUIAlertView ()
-@property (nonatomic, weak) id<DSAlertViewDelegate> alertDelegate;
+@property (nonatomic, strong) NSMutableArray<DSAlertButton*> *buttons;
 @end
 
 @implementation DSUIAlertView
 @synthesize alert = _alert;
+@synthesize onDismiss;
 
-- (id)initWithTitle:(NSString *)title
-            message:(NSString *)message
-           delegate:(id<DSAlertViewDelegate>)delegate
-  cancelButtonTitle:(NSString *)cancelButtonTitle
-  otherButtonTitles:(NSString *)otherButtonTitles, ...
++ (instancetype)alertViewWithTitle:(nullable NSString *)title
+                           message:(nullable NSString *)message;
 {
-  NSMutableArray *otherButtonTitlesArray = [NSMutableArray array];
-
-  va_list buttonTitlesList;
-  va_start(buttonTitlesList, otherButtonTitles);
-  for (NSString *buttonTitle = otherButtonTitles;
-      buttonTitle != nil;
-      buttonTitle = va_arg(buttonTitlesList, NSString *))
-  {
-    [otherButtonTitlesArray addObject:buttonTitle];
-  }
-
-  return [self initWithTitle:title
-                     message:message
-                    delegate:delegate
-           cancelButtonTitle:cancelButtonTitle
-                 otherTitles:otherButtonTitlesArray];
+  return [super alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
 }
 
-- (id)initWithTitle:(NSString *)title
-            message:(NSString *)message
-           delegate:(id<DSAlertViewDelegate>)delegate
-  cancelButtonTitle:(NSString *)cancelButtonTitle
-        otherTitles:(NSArray *)otherButtonTitles
-{
-  self = [super initWithTitle:title
-                      message:message
-                     delegate:nil
-            cancelButtonTitle:cancelButtonTitle
-            otherButtonTitles:nil];
-
-  if (self) {
-    for (NSString *buttonTitle in otherButtonTitles) {
-      [self addButtonWithTitle:buttonTitle];
-    }
-    
-    [self setDelegate:delegate];
+- (NSMutableArray *)buttons {
+  if (!_buttons) {
+    _buttons = [NSMutableArray array];
   }
-
-  return self;
-}
-
-- (void)setDelegate:(id<DSAlertViewDelegate>)theDelegate
-{
-  [super setDelegate:self];
-  [self setAlertDelegate:theDelegate];
+  return _buttons;
 }
 
 - (void)show
 {
-  [super show];
+  [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:self animated:true completion:nil];
+  //TODO: Present to root view controller of the window?
 }
 
-- (void)dismissAnimated:(BOOL)animated
+- (void)dismissAnimated:(BOOL)animated completion:(void(^)())completion
 {
-  [super dismissWithClickedButtonIndex:[self cancelButtonIndex] animated:YES];
+  [self dismissViewControllerAnimated:animated completion:completion];
 }
 
-- (BOOL)isCancelButtonAtIndex:(NSInteger)theButtonIndex
-{
-  return [self cancelButtonIndex] == theButtonIndex;
+- (void)addButton:(DSAlertButton *)button style:(DSAlertButtonStyle)style {
+  [self.buttons addObject:button];
+  DSWEAK_SELF;
+  [self addAction:[UIAlertAction actionWithTitle:button.title
+                                           style:style
+                                         handler:^(UIAlertAction * _Nonnull action) {
+                                           [button invoke];
+                                           weakSelf.onDismiss(weakSelf);
+                                         }]];
 }
-
-- (void)        alertView:(UIAlertView *)alertView
-didDismissWithButtonIndex:(NSInteger)buttonIndex
-{
-  [[self alertDelegate] alertView:self didDismissWithButtonIndex:buttonIndex];
-}
-
-
 @end

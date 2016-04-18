@@ -1,26 +1,25 @@
 
 @import Foundation;
+#import "DSAlertButtonStyle.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@protocol DSAlertViewDelegate;
 @class DSAlert;
+@class DSAlertButton;
+@protocol DSAlertView;
 @import Foundation;
 
 @protocol DSAlertView<NSObject>
 @property (nonatomic, strong, nullable) DSAlert *alert;
+@property (nonatomic, copy) void (^onDismiss)(id<DSAlertView>);
 
-- (instancetype)initWithTitle:(nullable NSString *)title
-                      message:(nullable NSString *)message
-                     delegate:(nullable id<DSAlertViewDelegate>)delegate
-            cancelButtonTitle:(nullable NSString *)cancelButtonTitle
-                  otherTitles:(nullable NSArray *)otherButtonTitles;
++ (instancetype)alertViewWithTitle:(nullable NSString *)title
+                           message:(nullable NSString *)message;
 
-- (void)setDelegate:(nullable id<DSAlertViewDelegate>)theDelegate;
+- (void)addButton:(DSAlertButton *)button style:(DSAlertButtonStyle)style;
+
 - (void)show;
-- (void)dismissAnimated:(BOOL)animated;
-
-- (BOOL)isCancelButtonAtIndex:(NSInteger)theButtonIndex;
+- (void)dismissAnimated:(BOOL)animated completion:(void(^)())completion;
 @end
 
 NS_ASSUME_NONNULL_END

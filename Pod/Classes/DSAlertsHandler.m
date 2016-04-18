@@ -113,7 +113,10 @@
   
   [self setCurrentAlertView:alertView];
   [self setCurrentAlert:theAlert];
-  
+  DSWEAK_SELF;
+  [alertView setOnDismiss:^(id<DSAlertView> _Nonnull alertView) {
+    [weakSelf alertDismissed];
+  }];
   [alertView show];
 }
 
@@ -219,24 +222,24 @@
   [self alertDismissed];
 }
 
-- (void)        alertView:(id<DSAlertView>)theAlertView
-didDismissWithButtonIndex:(NSInteger)theButtonIndex
-{
-  ASSERT_MAIN_THREAD;
-  
-  DSAlertButton *clickedButton = nil;
-  
-  if ([theAlertView isCancelButtonAtIndex:theButtonIndex]) {
-    clickedButton = [[self currentAlert] cancelButton];
-  }
-  else {
-    clickedButton = [[[self currentAlert] otherButtons]
-                     objectAtIndex:(NSUInteger)(theButtonIndex - ([[self currentAlert] cancelButton] ? 1: 0))];
-  }
-  
-  [clickedButton invoke];
-  [self alertDismissed];
-}
+//- (void)        alertView:(id<DSAlertView>)theAlertView
+//didDismissWithButtonIndex:(NSInteger)theButtonIndex
+//{
+//  ASSERT_MAIN_THREAD;
+//  
+//  DSAlertButton *clickedButton = nil;
+//  
+//  if ([theAlertView isCancelButtonAtIndex:theButtonIndex]) {
+//    clickedButton = [[self currentAlert] cancelButton];
+//  }
+//  else {
+//    clickedButton = [[[self currentAlert] otherButtons]
+//                     objectAtIndex:(NSUInteger)(theButtonIndex - ([[self currentAlert] cancelButton] ? 1: 0))];
+//  }
+//  
+//  [clickedButton invoke];
+//  [self alertDismissed];
+//}
 
 #pragma mark - Notifications
 - (void)applicationDidResignActive:(NSNotification *)notification
@@ -248,7 +251,7 @@ didDismissWithButtonIndex:(NSInteger)theButtonIndex
   }]];
   
   if ([[[self currentAlertView] alert] shouldDismissOnApplicationDidResignActive]) {
-    [[self currentAlertView] dismissAnimated:NO];
+    [[self currentAlertView] dismissAnimated:NO completion:nil];
   }
 }
 
