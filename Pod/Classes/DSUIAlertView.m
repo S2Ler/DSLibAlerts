@@ -1,6 +1,7 @@
 
 #pragma mark - include
 #import "DSUIAlertView.h"
+#import "DSAlertsHandler.h"
 #import "DSAlertButton.h"
 @import DSLibCore;
 
@@ -28,7 +29,7 @@
 
 - (void)show
 {
-  [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:self animated:true completion:nil];
+  [[DSAlertsHandler sharedInstance].getViewControllerForAlerts() presentViewController:self animated:true completion:nil];
   //TODO: Present to root view controller of the window?
 }
 
