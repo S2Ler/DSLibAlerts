@@ -1,0 +1,37 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "4B117C6CF7463B57E237726EDB09D5F5D3824EF7",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "734C28D35D4FE81FDAC5FB6ABEFD8C91CC1DFF04" : 0,
+    "5AE1F5BAE15A9679B85AC23C34F44B595BB75CFF" : 0,
+    "4B117C6CF7463B57E237726EDB09D5F5D3824EF7" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "08240E55-FBA8-4A2D-A1E1-92EB3DEF336F",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "734C28D35D4FE81FDAC5FB6ABEFD8C91CC1DFF04" : "DSLibCore",
+    "5AE1F5BAE15A9679B85AC23C34F44B595BB75CFF" : "DSLibAlerts\/Submodules\/SystemWindowController\/",
+    "4B117C6CF7463B57E237726EDB09D5F5D3824EF7" : "DSLibAlerts"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "DSLibAlerts",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Example\/DSLibAlerts.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:diejmon\/DSLibAlerts.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "4B117C6CF7463B57E237726EDB09D5F5D3824EF7"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:diejmon\/SystemWindowController.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "5AE1F5BAE15A9679B85AC23C34F44B595BB75CFF"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/diejmon\/DSLibCore.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "734C28D35D4FE81FDAC5FB6ABEFD8C91CC1DFF04"
+    }
+  ]
+}

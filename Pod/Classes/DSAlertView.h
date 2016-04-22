@@ -19,7 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)addButton:(DSAlertButton *)button style:(DSAlertButtonStyle)style;
 
 - (void)show;
-- (void)dismissAnimated:(BOOL)animated completion:(void(^)())completion;
+- (void)dismissAnimated:(BOOL)animated completion:(void(^_Nullable)())completion;
 @end
 
 NS_ASSUME_NONNULL_END

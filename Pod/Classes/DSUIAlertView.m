@@ -42,7 +42,7 @@
   [self.buttons addObject:button];
   DSWEAK_SELF;
   [self addAction:[UIAlertAction actionWithTitle:button.title
-                                           style:style
+                                           style:(UIAlertActionStyle)style
                                          handler:^(UIAlertAction * _Nonnull action) {
                                            [button invoke];
                                            weakSelf.onDismiss(weakSelf);

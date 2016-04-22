@@ -1,0 +1,6 @@
+[submodule "Submodules/SystemWindowController"]
+	path = Submodules/SystemWindowController
+	url = git@github.com:diejmon/SystemWindowController.git
+[submodule "Submodules/DSLibCore"]
+	path = Submodules/DSLibCore
+	url = git@github.com:diejmon/DSLibCore.git

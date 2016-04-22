@@ -108,8 +108,7 @@
 - (void)showModalAlert:(DSAlert *)theAlert
 {
   ASSERT_MAIN_THREAD;
-  id<DSAlertView> alertView = [DSAlertViewFactory modalAlertViewWithAlert:theAlert
-                                                                 delegate:self];
+  id<DSAlertView> alertView = [DSAlertViewFactory modalAlertViewWithAlert:theAlert];
   
   [self setCurrentAlertView:alertView];
   [self setCurrentAlert:theAlert];

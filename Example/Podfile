@@ -1,15 +1,14 @@
 source 'https://github.com/CocoaPods/Specs.git'
 use_frameworks!
 
-target 'DSLibAlerts', :exclusive => true do
-  pod 'DSLibCore', :path => "../../DSLibCore"
+target 'DSLibAlerts' do
+  pod 'DSLibCore', :path => "../Submodules/DSLibCore"
   pod "DSLibAlerts", :path => "../"
+  pod 'SystemWindowController', :path => "../Submodules/SystemWindowController"
 end
 
-target 'Tests', :exclusive => true do
-  pod 'DSLibCore', :path => "../../DSLibCore"
+target 'Tests' do
+  pod 'DSLibCore', :path => "../Submodules/DSLibCore"
   pod "DSLibAlerts", :path => "../"
-
-  pod 'Specta'
-  pod 'Expecta'
+  pod 'SystemWindowController', :path => "../Submodules/SystemWindowController"
 end

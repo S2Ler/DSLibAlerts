@@ -11,7 +11,6 @@
 @implementation DSAlertViewFactory
 
 + (id<DSAlertView>)modalAlertViewWithAlert:(DSAlert *)theAlert
-                                  delegate:(id<DSAlertViewDelegate>)theDelegate
 {
   NSArray<DSAlertButton*> *otherButtons = [theAlert otherButtons];
 
