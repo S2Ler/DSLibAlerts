@@ -66,7 +66,7 @@
     return result;
   }
   
-  if ([title isEqualToString:localizationKey]) {
+  if ([title isEqualToString:localizationKey] || title == nil) {
     if ([self error]) {
       return [DSMessage messageTitleFromError:[self error]];
     }
@@ -126,7 +126,7 @@
     }
     return result;
   }
-  else if ([body isEqualToString:localizationKey]) {
+  else if ([body isEqualToString:localizationKey] || body == nil) {
     if ([self error]) {
       return [DSMessage messageBodyFromError:[self error]];
     }
