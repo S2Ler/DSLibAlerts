@@ -7,13 +7,19 @@
 //
 
 #import "DSAppDelegate.h"
+@import DSLibAlerts;
+@import DSLibCore;
 
 @implementation DSAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
-    return YES;
+  [[DSAlertsHandler sharedInstance] setGetViewControllerForAlerts:^UIViewController * _Nonnull{
+    return [UIApplication sharedApplication].keyWindow.rootViewController;
+  }];
+  
+  // Override point for customization after application launch.
+  return YES;
 }
 							
 - (void)applicationWillResignActive:(UIApplication *)application

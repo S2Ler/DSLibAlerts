@@ -7,6 +7,7 @@
 //
 
 #import "DSViewController.h"
+@import DSLibAlerts;
 
 @interface DSViewController ()
 
@@ -16,8 +17,13 @@
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+  [super viewDidLoad];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+  [super viewDidAppear:animated];
+  DSMessage *customMessage = [DSMessage messageWithTitle:@"Hello" message:@"Error"];
+  [[DSAlertsHandler sharedInstance] showSimpleMessageAlert:customMessage];
 }
 
 - (void)didReceiveMemoryWarning
