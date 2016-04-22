@@ -26,7 +26,7 @@ NSInteger kUnknownCode = NSIntegerMin;
   return [self errorWithTitle:title
                   description:description
                        domain:NSCocoaErrorDomain
-                         code:@"0"];
+                         code:[NSString stringWithFormat:@"%d", title.hash]];
 }
 
 + (instancetype)errorWithTitle:(NSString *)title
