@@ -30,7 +30,6 @@
   return [[DSAlertsHandlerConfiguration sharedInstance] messagesTableBundle];
 }
 
-
 + (NSString *)localizationTable
 {
   return [[DSAlertsHandlerConfiguration sharedInstance] messagesLocalizationTableName];
@@ -324,7 +323,7 @@
 
 - (id)initWithCoder:(NSCoder *)decoder
 {
-  self = [super init];
+  self = [self init];
   if (self) {
     self.context = [decoder decodeObjectForKey:@"context"];
     self.domain = [decoder decodeObjectForKey:@"domain"];

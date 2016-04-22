@@ -8,7 +8,6 @@ NS_ASSUME_NONNULL_BEGIN
 @class DSAlertsQueue;
 
 @interface DSAlertsHandler: NSObject
-@property (nonatomic, copy) UIViewController *(^getViewControllerForAlerts)();
 @property (nonatomic, weak, nullable) DSReachability *reachability;
 @property (nonatomic, strong, nullable) NSArray *filterOutMessages;
 

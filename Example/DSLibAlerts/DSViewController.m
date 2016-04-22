@@ -23,7 +23,10 @@
 - (void)viewDidAppear:(BOOL)animated {
   [super viewDidAppear:animated];
   DSMessage *customMessage = [DSMessage messageWithTitle:@"Hello" message:@"Error"];
+  DSMessage *customMessage2 = [DSMessage messageWithTitle:@"Hello2" message:@"Error2"];
+
   [[DSAlertsHandler sharedInstance] showSimpleMessageAlert:customMessage];
+  [[DSAlertsHandler sharedInstance] showSimpleMessageAlert:customMessage2];
 }
 
 - (void)didReceiveMemoryWarning

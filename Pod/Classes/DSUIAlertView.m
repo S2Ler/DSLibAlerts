@@ -4,6 +4,7 @@
 #import "DSAlertsHandler.h"
 #import "DSAlertButton.h"
 @import DSLibCore;
+@import SystemWindowController;
 
 #pragma mark - private
 @interface DSUIAlertView ()
@@ -13,6 +14,16 @@
 @implementation DSUIAlertView
 @synthesize alert = _alert;
 @synthesize onDismiss;
+
++ (SystemWindowController *)alertWindowController {
+  static dispatch_once_t onceToken;
+  static SystemWindowController *alertsWindowController = nil;
+  dispatch_once(&onceToken, ^{
+    alertsWindowController = [[SystemWindowController alloc] initWithWindowLevel:UIWindowLevelAlert];
+  });
+  
+  return alertsWindowController;
+}
 
 + (instancetype)alertViewWithTitle:(nullable NSString *)title
                            message:(nullable NSString *)message;
@@ -29,8 +40,7 @@
 
 - (void)show
 {
-  [[DSAlertsHandler sharedInstance].getViewControllerForAlerts() presentViewController:self animated:true completion:nil];
-  //TODO: Present to root view controller of the window?
+  [[DSUIAlertView alertWindowController] showSystemViewController:self atLevel:0];
 }
 
 - (void)dismissAnimated:(BOOL)animated completion:(void(^)())completion

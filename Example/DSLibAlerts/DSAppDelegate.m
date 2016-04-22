@@ -14,10 +14,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-  [[DSAlertsHandler sharedInstance] setGetViewControllerForAlerts:^UIViewController * _Nonnull{
-    return [UIApplication sharedApplication].keyWindow.rootViewController;
-  }];
-  
   // Override point for customization after application launch.
   return YES;
 }
