@@ -19,7 +19,7 @@
   static dispatch_once_t onceToken;
   static SystemWindowController *alertsWindowController = nil;
   dispatch_once(&onceToken, ^{
-    alertsWindowController = [[SystemWindowController alloc] initWithWindowLevel:UIWindowLevelAlert];
+    alertsWindowController = [[SystemWindowController alloc] initWithWindowLevel:UIWindowLevelAlert + 1];
   });
   
   return alertsWindowController;
@@ -45,7 +45,10 @@
 
 - (void)dismissAnimated:(BOOL)animated completion:(void(^)())completion
 {
-  [self dismissViewControllerAnimated:animated completion:completion];
+  [[DSUIAlertView alertWindowController] dismissSystemViewController:self];
+  if (completion != nil) {
+    completion();
+  }
 }
 
 - (void)addButton:(DSAlertButton *)button style:(DSAlertButtonStyle)style {
@@ -55,6 +58,7 @@
                                            style:(UIAlertActionStyle)style
                                          handler:^(UIAlertAction * _Nonnull action) {
                                            [button invoke];
+//                                           [weakSelf dismissAnimated:true completion:nil];
                                            weakSelf.onDismiss(weakSelf);
                                          }]];
 }
