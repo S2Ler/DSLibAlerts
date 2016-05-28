@@ -8,26 +8,26 @@ PODS:
   - DSLibCore/Core (2.0):
     - DSLibCore/no-arc
   - DSLibCore/no-arc (2.0)
-  - SystemWindowController (0.1.0)
+  - SystemWindowController (0.2.1)
 
 DEPENDENCIES:
   - DSLibAlerts (from `../`)
-  - DSLibCore (from `../../DSLibCore`)
+  - DSLibCore (from `../Submodules/DSLibCore`)
   - SystemWindowController (from `../Submodules/SystemWindowController`)
 
 EXTERNAL SOURCES:
   DSLibAlerts:
     :path: "../"
   DSLibCore:
-    :path: "../../DSLibCore"
+    :path: "../Submodules/DSLibCore"
   SystemWindowController:
     :path: "../Submodules/SystemWindowController"
 
 SPEC CHECKSUMS:
   DSLibAlerts: 9d842ae50496124cfeb5a8e32367477fc96a7812
   DSLibCore: 13bc5a43e698ed5ca8c372d112ae04185b693190
-  SystemWindowController: 4b0c38c48ad59750d9b7218e82a780a758ffa41d
+  SystemWindowController: 9512792858493234e30c3972101eaef3aebc758b
 
-PODFILE CHECKSUM: 933590653532240786da8442eb8453601b9f1406
+PODFILE CHECKSUM: 173bfd8a6c33ae519219b07615728dab0aeccd36
 
-COCOAPODS: 1.0.0.beta.8
+COCOAPODS: 1.0.0
