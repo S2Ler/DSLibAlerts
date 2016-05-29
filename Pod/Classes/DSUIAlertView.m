@@ -1,7 +1,6 @@
 
 #pragma mark - include
 #import "DSUIAlertView.h"
-#import "DSAlertsHandler.h"
 #import "DSAlertButton.h"
 @import DSLibCore;
 @import SystemWindowController;
@@ -28,7 +27,7 @@
 + (instancetype)alertViewWithTitle:(nullable NSString *)title
                            message:(nullable NSString *)message;
 {
-  return [super alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+  return [self alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
 }
 
 - (NSMutableArray *)buttons {

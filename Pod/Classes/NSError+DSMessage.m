@@ -18,7 +18,7 @@ NSInteger kUnknownCode = NSIntegerMin;
 
 - (NSString *)title
 {
-  return [[self userInfo] objectForKey:ERROR_TITLE_KEY];
+  return [self userInfo][ERROR_TITLE_KEY];
 }
 
 + (instancetype)errorWithTitle:(NSString *)title description:(NSString *)description
@@ -52,11 +52,11 @@ NSInteger kUnknownCode = NSIntegerMin;
 
 - (BOOL)isErrorFromMessage
 {
-  return self.code == kUnknownCode && [self.userInfo objectForKey:ERROR_CODE_KEY] != nil;
+  return self.code == kUnknownCode && self.userInfo[ERROR_CODE_KEY] != nil;
 }
 
 - (NSString *)extractMessageCode
 {
-  return [self.userInfo objectForKey:ERROR_CODE_KEY];
+  return self.userInfo[ERROR_CODE_KEY];
 }
 @end

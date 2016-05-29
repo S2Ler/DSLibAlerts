@@ -35,8 +35,7 @@
         parseErrorDescription = @"Unknown error";
     }
     
-    [userInfo setObject:parseErrorDescription
-                 forKey:NSLocalizedDescriptionKey];
+    userInfo[NSLocalizedDescriptionKey] = parseErrorDescription;
     return [NSError errorWithDomain:[self domain]
                                code:[self code]
                            userInfo:userInfo];

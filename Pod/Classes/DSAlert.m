@@ -3,6 +3,7 @@
 #import "DSAlert.h"
 #import "DSAlertButton.h"
 #import "DSMessage.h"
+@import DSLibCore;
 
 #pragma mark - private
 @interface DSAlert ()
@@ -68,11 +69,12 @@
 
 - (BOOL)isAlertMessageEqualWith:(id)theObj
 {
-  if (theObj == nil || [theObj isKindOfClass:[self class]] == NO) {
+  DSAlert *alert = DSDynamicCast(theObj, DSAlert);
+  if (alert == nil) {
     return NO;
   }
 
-  BOOL messagesEquals = [[self message] isEqualToMessage:[theObj message]];
+  BOOL messagesEquals = [[self message] isEqualToMessage:[alert message]];
   return messagesEquals;
 }
 

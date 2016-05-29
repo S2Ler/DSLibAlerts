@@ -1,10 +1,9 @@
 
 #pragma mark - include
 #import "DSMessage.h"
-#import "NSString+Extras.h"
 #import "DSAlertsHandlerConfiguration.h"
 #import "NSError+DSMessage.h"
-@import ObjectiveC;
+#import <objc/runtime.h>
 
 #pragma mark - private
 @interface DSMessage ()

@@ -1,12 +1,9 @@
 #pragma mark - include
 #import "DSAlertsHandler.h"
-#import "DSMacros.h"
 #import "DSAlert.h"
-#import "DSQueue.h"
 #import "DSAlertView.h"
 #import "DSAlertViewFactory.h"
 #import "DSAlertButton.h"
-#import "DSReachability.h"
 #import "DSMessage.h"
 #import "DSAlertsQueue.h"
 #import "DSAlertQueue+Private.h"
@@ -123,13 +120,13 @@
 - (BOOL)isAlertInQueue:(DSAlert *)theAlert
 {
   BOOL currentAlertEquals = [[self currentAlert] isAlertMessageEqualWith:theAlert];
-  if (currentAlertEquals == YES) {
+  if (currentAlertEquals) {
     return YES;
   }
   
   BOOL alertInQueue = NO;
   for (DSAlert *queueAlert in [self alertsQueue]) {
-    if ([queueAlert isAlertMessageEqualWith:theAlert] == YES) {
+    if ([queueAlert isAlertMessageEqualWith:theAlert]) {
       alertInQueue = YES;
       break;
     }
@@ -141,7 +138,7 @@
 - (BOOL)isMessage:(DSMessage *)message inCollection:(id<NSFastEnumeration>)collection {
   BOOL alertInCollection = NO;
   for (DSMessage *collectionMessage in collection) {
-    if ([collectionMessage isEqualToMessage:message] == YES) {
+    if ([collectionMessage isEqualToMessage:message]) {
       alertInCollection = YES;
       break;
     }
@@ -159,7 +156,7 @@
   }
   
   //If the same message is already in queue don't do anything
-  if ([self isAlertInQueue:theAlert] == YES) {
+  if ([self isAlertInQueue:theAlert]) {
     return;
   }
   
@@ -246,7 +243,7 @@
   ASSERT_MAIN_THREAD;
   
   [[self alertsQueue] filterWithPredicate:[NSPredicate predicateWithBlock:^BOOL(DSAlert *alert, NSDictionary *bindings) {
-    return [alert shouldDismissOnApplicationDidResignActive] == NO;
+    return ![alert shouldDismissOnApplicationDidResignActive];
   }]];
   
   if ([[[self currentAlertView] alert] shouldDismissOnApplicationDidResignActive]) {

@@ -1,6 +1,7 @@
 
 #pragma mark - include
 #import "DSAlertButton.h"
+@import DSLibCore;
 
 typedef enum
 {
@@ -73,7 +74,7 @@ typedef enum
     [self block](self);
   }
   else if ([self invocationType] == OAlertButtonTargetActionInvocationType) {
-    if ([[self target] respondsToSelector:[self action]] == YES) {
+    if ([[self target] respondsToSelector:[self action]]) {
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
       [[self target] performSelector:[self action]];

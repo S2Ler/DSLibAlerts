@@ -1,6 +1,8 @@
 
 #import "DSAlertsHandlerConfiguration.h"
-@import DSLibCore;
+#import <DSLibCore/DSMacros.h>
+#import <DSLibCore/NSString+Extras.h>
+
 #define DEFAULT_LOCALIZATION_TABLE @"DSMessagesLocalization"
 
 static NSDictionary *DSAlertsHandlerConfiguration_sharedConfiguration = nil;

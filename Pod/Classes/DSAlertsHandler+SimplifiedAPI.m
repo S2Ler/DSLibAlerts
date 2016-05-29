@@ -4,7 +4,7 @@
 #import "DSAlertButton.h"
 #import "DSAlertsHandler+SimplifiedAPI.h"
 #import "NSError+Parse.h"
-@import ObjectiveC;
+#import <objc/runtime.h>
 
 @implementation DSAlertsHandler (SimplifiedAPI)
 static char simplifiedAPIDelegateKey;

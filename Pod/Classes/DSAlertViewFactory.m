@@ -21,10 +21,10 @@
 
   id<DSAlertView> alertView = nil;
   NSString *alertViewClassName = [[DSAlertsHandlerConfiguration sharedInstance] modelAlertsClassName];
-  Class alertViewClass = NSClassFromString(alertViewClassName);
-  if (alertViewClass) {
-    alertView = [alertViewClass alertViewWithTitle:[theAlert localizedTitle]
-                                          message:[theAlert localizedBody]];
+  Class<DSAlertView> alertViewClass = NSClassFromString(alertViewClassName);
+  if (alertViewClass != NULL) {
+    alertView = (id <DSAlertView>) [alertViewClass alertViewWithTitle:[theAlert localizedTitle]
+                                                              message:[theAlert localizedBody]];
   }
   else {
     alertView = [DSUIAlertView alertViewWithTitle:[theAlert localizedTitle]

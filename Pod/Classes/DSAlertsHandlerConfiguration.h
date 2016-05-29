@@ -1,7 +1,6 @@
 
 @import Foundation;
 
-
 @interface DSAlertsHandlerConfiguration : NSObject
 + (nonnull instancetype)sharedInstance;
 + (nonnull instancetype)setupSharedInstanceWithConfigurationDictionary:(nonnull NSDictionary *)theConfiguration
