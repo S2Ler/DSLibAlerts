@@ -12,8 +12,8 @@
 #import "DSMessage.h"
 #import "DSAlertsHandler+SimplifiedAPI.h"
 #import "DSAlert.h"
-#import <DSLibCore/DSQueue.h>
-#import <DSLibCore/DSTimeFunctions.h>
+@import DSLibCore;
+
 
 @interface DSAlertsQueue ()
 @property (nonatomic, strong) DSQueue *queue;
