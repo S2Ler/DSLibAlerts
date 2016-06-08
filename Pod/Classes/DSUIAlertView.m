@@ -39,15 +39,12 @@
 
 - (void)show
 {
-  [[DSUIAlertView alertWindowController] showSystemViewController:self atLevel:0];
+  [[DSUIAlertView alertWindowController] showSystemViewController:self atLevel:0 completion:nil];
 }
 
 - (void)dismissAnimated:(BOOL)animated completion:(void(^)())completion
 {
-  [[DSUIAlertView alertWindowController] dismissSystemViewController:self];
-  if (completion != nil) {
-    completion();
-  }
+  [[DSUIAlertView alertWindowController] dismissSystemViewController:self completion:completion];
 }
 
 - (void)addButton:(DSAlertButton *)button style:(DSAlertButtonStyle)style {
