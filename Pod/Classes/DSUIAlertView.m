@@ -44,7 +44,13 @@
 
 - (void)dismissAnimated:(BOOL)animated completion:(void(^)())completion
 {
-  [[DSUIAlertView alertWindowController] dismissSystemViewController:self completion:completion];
+  DSWEAK_SELF;
+  [[DSUIAlertView alertWindowController] dismissSystemViewController:self completion:^{
+    weakSelf.onDismiss(weakSelf);
+    if (completion != nil) {
+      completion();
+    }
+  }];
 }
 
 - (void)addButton:(DSAlertButton *)button style:(DSAlertButtonStyle)style {
