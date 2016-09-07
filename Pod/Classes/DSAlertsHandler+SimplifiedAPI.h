@@ -17,8 +17,8 @@
 
 @interface DSAlertsHandler (SimplifiedAPI)
 - (void)setSimpleAPIDelegate:(nonnull id<DSAlertsHandlerSimplifiedAPIDelegate>)simplifiedAPIDelegate;
-- (void)showSimpleMessageAlert:(nullable DSMessage *)theMessage;
-- (void)showError:(nullable NSError *)error;
+- (void)showSimpleMessageAlert:(nullable DSMessage *)theMessage NS_SWIFT_NAME(show(_:));
+- (void)showError:(nullable NSError *)error NS_SWIFT_NAME(show(_:));
 - (void)showParseError:(nullable NSError *)error;
 - (void)showUnknownError;
 @end
