@@ -39,7 +39,7 @@
 
 - (void)show
 {
-  [[DSUIAlertView alertWindowController] showSystemViewController:self atLevel:0 completion:nil];
+  [[DSUIAlertView alertWindowController] show:self at:0 completion:nil];
 }
 
 - (void)dismissAnimated:(BOOL)animated completion:(void(^)())completion
