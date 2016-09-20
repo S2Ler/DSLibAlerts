@@ -7,11 +7,3 @@
 //
 
 #import "DSAlertQueue+Private.h"
-
-@implementation DSAlertsQueue (Private)
-
-- (void)setAlertsHandler:(DSAlertsHandler *)handler
-{
-  _alertsHandler = handler;
-}
-@end

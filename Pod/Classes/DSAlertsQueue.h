@@ -12,10 +12,7 @@
 @class DSMessage;
 @class DSAlert;
 
-@interface DSAlertsQueue : NSObject {
-  @private
-  __weak  DSAlertsHandler * __nullable _alertsHandler;
-}
+@interface DSAlertsQueue : NSObject 
 
 /** Interval between which queue will commit all objects added. Default is 2s */
 @property (nonatomic, assign) NSTimeInterval despatchInterval;
@@ -28,3 +25,4 @@
 - (void)commit;
                  
 @end
+

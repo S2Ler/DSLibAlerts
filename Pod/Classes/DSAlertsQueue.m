@@ -11,18 +11,20 @@
 #import "DSAlertsHandler.h"
 #import "DSMessage.h"
 #import "DSAlertsHandler+SimplifiedAPI.h"
+#import "DSAlertQueue+Private.h"
 #import "DSAlert.h"
 @import DSLibCore;
 
 
 @interface DSAlertsQueue ()
+
 @property (nonatomic, strong) DSQueue *queue;
 @property (nonatomic, strong) NSTimer *despatchTimer;
 
 @end
 
 @implementation DSAlertsQueue
-
+@synthesize alertsHandler = _alertsHandler;
 - (id)init
 {
   self = [super init];

@@ -9,6 +9,7 @@
 
 @class DSAlertsHandler;
 
-@interface DSAlertsQueue (Private)
-- (void)setAlertsHandler:(nullable DSAlertsHandler *)handler;
+@interface DSAlertsQueue ()
+@property (nonatomic, weak, nullable) DSAlertsHandler *alertsHandler;
+
 @end
