@@ -6,7 +6,8 @@
 //  Copyright (c) 2013 DS ltd. All rights reserved.
 //
 
-#import "DSMessage.h"
+#import <DSLibAlerts/DSMessage.h>
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface DSMessage (Parse)

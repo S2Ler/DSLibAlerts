@@ -1,6 +1,6 @@
 
 @import Foundation;
-#import "DSAlertsHandler.h"
+#import <DSLibAlerts/DSAlertsHandler.h>
 
 @class DSMessage;
 

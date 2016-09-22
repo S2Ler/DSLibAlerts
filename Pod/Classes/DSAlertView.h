@@ -1,6 +1,6 @@
 
 @import Foundation;
-#import "DSAlertButtonStyle.h"
+#import <DSLibAlerts/DSAlertButtonStyle.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
