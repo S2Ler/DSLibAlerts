@@ -1,6 +1,6 @@
 
 @import Foundation;
-#import <DSLibAlerts/DSAlertsSupportCode.h>
+#import "DSAlertsSupportCode.h"
 @import DSLibCore;
 
 NS_ASSUME_NONNULL_BEGIN
