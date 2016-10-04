@@ -11,7 +11,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, weak, nullable) DSReachability *reachability;
 @property (nonatomic, strong, nullable) NSArray *filterOutMessages;
 
-+ (instancetype)sharedInstance NS_SWIFT_NAME(shared());
+@property (class, readonly, strong) DSAlertsHandler *sharedInstance NS_SWIFT_NAME(shared);
 
 - (void)showAlert:(nullable DSAlert *)theAlert modally:(BOOL)isModalAlert;
 
