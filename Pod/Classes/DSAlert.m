@@ -17,7 +17,7 @@
 - (instancetype)init
 {
   ASSERT_NOT_SUPPORTED_METHOD;
-  return [self initWithMessage:[DSMessage unknownError]
+  return [self initWithMessage:[DSMessage newUnknownError]
                   cancelButton:nil
                   otherButtons:nil];
 }

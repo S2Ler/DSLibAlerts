@@ -42,10 +42,10 @@ static char simplifiedAPIDelegateKey;
 - (void)showError:(NSError *)error
 {
   if (error) {
-    [self showSimpleMessageAlert:[DSMessage messageWithError:error]];
+    [self showSimpleMessageAlert:[[DSMessage alloc] initWithError:error]];
   }
   else {
-    [self showSimpleMessageAlert:[DSMessage unknownError]];
+    [self showSimpleMessageAlert:[DSMessage newUnknownError]];
   }
 }
 

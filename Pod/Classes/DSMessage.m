@@ -187,13 +187,6 @@
                        params:nil];
 }
 
-+ (instancetype)messageWithDomain:(DSMessageDomain *)theDomain code:(DSMessageCode *)theCode
-{
-  DSMessage *message = [[DSMessage alloc] initWithDomain:theDomain
-                                                  code:theCode];
-  return message;
-}
-
 - (instancetype)initWithError:(NSError *)theError
 {
   NSString *domain = [theError domain];
@@ -214,30 +207,18 @@
   return self;
 }
 
-+ (instancetype)messageWithError:(NSError *)theError
-{
-  DSMessage *message = [[DSMessage alloc] initWithError:theError];
-  return message;
-}
-
-+ (instancetype)unknownError
++ (instancetype)newUnknownError
 {
   NSError *error = [NSError errorWithDomain:NSCocoaErrorDomain
                                        code:NSURLErrorUnknown
                                    userInfo:@{NSLocalizedDescriptionKey: @"Unknown Error"}];
-  return [DSMessage messageWithError:error];
+  return [[DSMessage alloc] initWithError:error];
 }
 
 - (instancetype)initWithTitle:(NSString *)title
                       message:(NSString *)message
 {
   return [self initWithError:[NSError errorWithTitle:title description:message]];
-}
-
-+ (instancetype)messageWithTitle:(NSString *)title
-                         message:(NSString *)message
-{
-  return [[self alloc] initWithTitle:title message:message];
 }
 
 - (BOOL)isEqualToMessage:(DSMessage *)theObj

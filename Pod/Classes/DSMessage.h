@@ -36,22 +36,14 @@ NS_ASSUME_NONNULL_BEGIN
 - (instancetype)initWithDomain:(DSMessageDomain *)theDomain
                           code:(DSMessageCode *)theCode;
 
-+ (instancetype)messageWithDomain:(DSMessageDomain *)theDomain
-                             code:(DSMessageCode *)theCode;
-
 - (instancetype)initWithTitle:(NSString *)title
                       message:(NSString *)message;
 
-+ (instancetype)messageWithTitle:(NSString *)title
-                         message:(NSString *)message;
-
 - (instancetype)initWithError:(NSError *)theError;
-
-+ (instancetype)messageWithError:(NSError *)theError;
 
 - (BOOL)isEqualToMessage:(nullable id)theObj;
 
-+ (instancetype)unknownError;
++ (instancetype)newUnknownError;
 
 - (BOOL)isGeneralErrorMessage;
 
