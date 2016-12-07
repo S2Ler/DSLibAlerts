@@ -43,7 +43,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (BOOL)isEqualToMessage:(nullable id)theObj;
 
-+ (instancetype)newUnknownError;
++ (instancetype)newUnknownError NS_SWIFT_NAME(unkownError());
 
 - (BOOL)isGeneralErrorMessage;
 
