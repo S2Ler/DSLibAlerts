@@ -36,7 +36,7 @@ NSInteger kUnknownCode = NSIntegerMin;
 {
   NSError *error = [NSError errorWithDomain:domain
                                        code:kUnknownCode
-                                   userInfo:@{NSLocalizedDescriptionKey: description,
+                                   userInfo:@{NSLocalizedDescriptionKey: description ?: @"",
                                               ERROR_TITLE_KEY: title ?: @"Unknown Error",
                                               ERROR_CODE_KEY: code ?: @""}];
   return error;
