@@ -52,11 +52,11 @@
   NSString *title = NSLocalizedStringFromTableInBundle(localizationKey, [self localizationTable], [self localizationBundle], nil);
   
   if ([[self titleParams] count] > 0) {
-    NSString *find = @"%@";
+    NSString *parameterPlaceholder = @"%@";
     
     NSString *result = title;
     for (NSString *arg in [self titleParams]) {
-      NSRange range = [result rangeOfString:find]; // this will find the first occurrence of the string
+      NSRange range = [result rangeOfString:parameterPlaceholder]; // this will find the first occurrence of the string
       if (range.location != NSNotFound) {
         result = [result stringByReplacingCharactersInRange:range withString:[arg description]];
       }
@@ -65,7 +65,10 @@
   }
   
   if ([title isEqualToString:localizationKey] || title == nil) {
-    if ([self error]) {
+    if ([[self error] title] != nil) {
+      return [[self error] title];
+    }
+    else if ([self error] != nil) {
       return [DSMessage messageTitleFromError:[self error]];
     }
     else if ([[[DSAlertsHandlerConfiguration sharedInstance] showGeneralMessageForUnknownCodes] boolValue]) {
@@ -125,7 +128,10 @@
     return result;
   }
   else if ([body isEqualToString:localizationKey] || body == nil) {
-    if ([self error]) {
+    if ([[self error] localizedDescription] != nil) {
+      return [[self error] localizedDescription];
+    }
+    else if ([self error]) {
       return [DSMessage messageBodyFromError:[self error]];
     }
     else if ([[[DSAlertsHandlerConfiguration sharedInstance] showGeneralMessageForUnknownCodes] boolValue]) {
@@ -148,7 +154,7 @@
 
 + (NSString *)messageBodyFromError:(NSError *)error
 {
-    return [error localizedDescription];
+  return [error localizedDescription];
 }
 
 - (instancetype)initWithDomain:(DSMessageDomain *)theDomain
@@ -177,6 +183,22 @@
     _params = theParams.copy;
   }
   
+  return self;
+}
+
+- (instancetype)initWithDomain:(DSMessageDomain *)theDomain
+                          code:(DSMessageCode *)theCode
+                         title:(NSString *)title
+                       message:(NSString *)message
+                   paramsArray:(nullable NSArray<id> *)theParams {
+  self = [self initWithDomain:theDomain
+                         code:theCode
+                       params:nil];
+
+  if (self != nil) {
+    _error = [NSError errorWithTitle:title description:message];
+  }
+
   return self;
 }
 
