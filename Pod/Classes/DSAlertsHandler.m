@@ -82,7 +82,7 @@
 {
   NSAssert(isModalAlert == YES, @"Only modal alert is supported now");
   
-  void (^block)() = ^{
+  void (^block)(void) = ^{
     [self queueAlert:theAlert];
   };
   

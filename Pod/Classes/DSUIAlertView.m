@@ -42,7 +42,7 @@
   [[DSUIAlertView alertWindowController] show:self at:0 completion:nil];
 }
 
-- (void)dismissAnimated:(BOOL)animated completion:(void(^)())completion
+- (void)dismissAnimated:(BOOL)animated completion:(void(^)(void))completion
 {
   DSWEAK_SELF;
   [[DSUIAlertView alertWindowController] dismissSystemViewController:self completion:^{
